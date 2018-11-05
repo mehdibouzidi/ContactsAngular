@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import {FormsModule} from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
@@ -8,7 +8,7 @@ import { ContactComponent } from './contact/contact.component';
 
 import {RouterModule, Routes} from '@angular/router';
 import { AboutComponent } from './about/about.component';
-import {ContactService} from "../services/contact.service";
+import {ContactService} from '../services/contact.service';
 const routes: Routes = [
   {path: 'contacts', component: ContactComponent},
   {path: 'about', component: AboutComponent},
@@ -19,7 +19,7 @@ const routes: Routes = [
   declarations: [
     AppComponent,
     ContactComponent,
-    AboutComponent
+    AboutComponent,
   ],
   imports: [
     BrowserModule,

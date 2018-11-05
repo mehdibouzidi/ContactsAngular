@@ -2,6 +2,13 @@
   <div class="card">
     <div class="card-header bg-info text-light">Contacts</div>
     <div class="card-body">
+
+      <div class="form-group">
+        <label>Keyword</label>
+        <input type="text" [(ngModel)]="keyword">
+        <button class="btn-info" (click)="onSearch()"><i class="fa fa-search"></i></button>
+      </div>
+
       <div class="table table-striped">
         <tr>
           <th>ID</th>
@@ -9,7 +16,7 @@
           <th>Prénom</th>
           <th>Email</th>
         </tr>
-        <tr *ngFor="let c of pageContacts ">
+        <tr *ngFor="let c of pageContacts?.content ">
           <td>{{c.id}}</td>
           <td>{{c.nom}}</td>
           <td>{{c.prenom}}</td>
