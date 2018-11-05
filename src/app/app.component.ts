@@ -6,5 +6,16 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app works!';
+  private LOGO = require('../../resources/angular-logo.png');
+  navbarContacts = true;
+  navbarAbout: boolean;
+
+  onClickContacts() {
+    this.navbarContacts = true;
+    this.navbarAbout = false;
+  }
+  onClickAbout() {
+    this.navbarContacts = false;
+    this.navbarAbout = true;
+  }
 }
