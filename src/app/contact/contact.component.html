@@ -26,3 +26,18 @@
     </div>
   </div>
 </div>
+<nav aria-label="Page navigation example" style="margin-top: 10px">
+  <ul class="pagination justify-content-center">
+    <li class="page-item " [ngClass]="currentPage-1 === 0 ? 'disabled' : ''">
+      <a class="page-link" (click)="goToPage(currentPage-2)" tabindex="-1">Previous</a>
+    </li>
+
+    <li class="page-item" [ngClass]="currentPage-1 === i ? 'active' : ''"
+        *ngFor="let p of pages let i=index"><a class="page-link" (click)="goToPage(i)">{{i+1}}</a></li>
+
+    <li class="page-item" [ngClass]="currentPage === totalPages ? 'disabled' : ''">
+      <a class="page-link" (click)="goToPage(currentPage)">Next</a>
+    </li>
+  </ul>
+</nav>
+

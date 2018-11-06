@@ -13,27 +13,38 @@ export class ContactComponent implements OnInit {
   keyword: any;
   page = 0;
   size = 5;
+  pages: any;
+  currentPage = 1;
+  totalPages: number;
+
 
   constructor(private http: Http, private contactService: ContactService) { }
 
   ngOnInit() {
-   /*this.contactService.getContacts()
-      .subscribe( data => {
-          this.pageContacts = data;
-        },
-        err => {
-          console.log('ERROR !');
-        });*/
+    /*this.contactService.getContacts()
+       .subscribe( data => {
+           this.pageContacts = data;
+         },
+         err => {
+           console.log('ERROR !');
+         });*/
   }
 
   onSearch() {
     console.log( this.keyword );
-   this.pageContacts =  this.contactService.doSearchByKeyWord(this.keyword, this.page, this.size)
+    this.pageContacts =  this.contactService.doSearchByKeyWord(this.keyword, this.page, this.size)
       .subscribe( data => {
-        this.pageContacts = data;
-      },
-      err => {
-        console.log('ERROR !');
-      });
+          this.pageContacts = data;
+          console.log(data);
+          this.pages = new Array (data.totalPages);
+        },
+        err => {
+          console.log('ERROR !');
+        });
+  }
+
+  goToPage(index) {
+    this.currentPage = index + 1;
+    this.onSearch();
   }
 }
