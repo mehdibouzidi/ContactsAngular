@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Http} from '@angular/http';
 import 'rxjs/add/operator/map';
-import {Contact} from "../model/model.contact";
+import {Contact} from '../model/model.contact';
 
 @Injectable()
 export class ContactService {
@@ -11,6 +11,10 @@ export class ContactService {
 
   getContacts() {
     return this.http.get( 'http://localhost:8080/contacts')
+      .map( resp =>  resp.json() );
+  }
+  getContact(id: number) {
+    return this.http.get( 'http://localhost:8080/contact/' + id )
       .map( resp =>  resp.json() );
   }
 
@@ -27,6 +31,12 @@ export class ContactService {
     const url = 'http://localhost:8080/contacts';
     console.log(url);
     return this.http.post( url, contact)
+      .map( resp =>  resp.json() );
+  }
+  edit(contact: Contact){
+    const url = 'http://localhost:8080/contacts/' + contact.id;
+    console.log(url);
+    return this.http.put( url, contact)
       .map( resp =>  resp.json() );
   }
 

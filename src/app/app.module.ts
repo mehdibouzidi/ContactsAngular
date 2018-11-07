@@ -10,9 +10,13 @@ import {RouterModule, Routes} from '@angular/router';
 import { AboutComponent } from './about/about.component';
 import {ContactService} from '../services/contact.service';
 import { NewContactComponent } from './new-contact/new-contact.component';
+import { NouveauContactComponent } from './nouveau-contact/nouveau-contact.component';
+import { EditContactComponent } from './edit-contact/edit-contact.component';
 const routes: Routes = [
   {path: 'contacts', component: ContactComponent},
   {path: 'new-contact', component: NewContactComponent},
+  {path: 'nouveau-contact', component: NouveauContactComponent},
+  {path: 'edit-contact/:id', component: EditContactComponent},
   {path: 'about', component: AboutComponent},
   {path: '', redirectTo: '/about', pathMatch: 'full'}
 ];
@@ -23,6 +27,8 @@ const routes: Routes = [
     ContactComponent,
     AboutComponent,
     NewContactComponent,
+    NouveauContactComponent,
+    EditContactComponent,
   ],
   imports: [
     BrowserModule,

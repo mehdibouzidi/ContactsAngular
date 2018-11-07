@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Http} from '@angular/http';
 import 'rxjs/add/operator/map';
 import {ContactService} from '../../services/contact.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-c',
@@ -18,7 +19,8 @@ export class ContactComponent implements OnInit {
   totalPages: number;
 
 
-  constructor(private http: Http, private contactService: ContactService) { }
+  constructor(private http: Http, private contactService: ContactService,
+              public router: Router) { }
 
   ngOnInit() {
     /*this.contactService.getContacts()
@@ -46,5 +48,9 @@ export class ContactComponent implements OnInit {
   goToPage(index) {
     this.currentPage = index + 1;
     this.onSearch();
+  }
+
+  onEditContact(id: number) {
+    this.router.navigate(['edit-contact', id]);
   }
 }
