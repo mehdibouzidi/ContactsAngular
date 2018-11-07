@@ -22,7 +22,9 @@
           <td>{{c.nom}}</td>
           <td>{{c.prenom}}</td>
           <td>{{c.email}}</td>
-          <td><a (click)="onEditContact(c.id)"><i class="fa fa-pencil"></i></a></td>
+          <td><a (click)="onEditContact(c.id)"><i class="fa fa-pencil"></i></a>
+          <a (click)="onDeleteContact(c)"><i class="fa fa-trash"></i></a>
+          </td>
         </tr>
       </div>
     </div>

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Contact} from '../../model/model.contact';
 import {ContactService} from '../../services/contact.service';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-edit-contact',
@@ -11,7 +11,8 @@ import {ActivatedRoute} from '@angular/router';
 export class EditContactComponent implements OnInit {
   contact: Contact = new Contact();
   mode = 1;
-  constructor(public contactService: ContactService, public activatedRoute: ActivatedRoute) {
+  constructor(public contactService: ContactService, public activatedRoute: ActivatedRoute,
+              public router: Router) {
     console.log();
   }
 
@@ -26,6 +27,16 @@ export class EditContactComponent implements OnInit {
   }
 
   updateContact() {
+    this.contactService.edit(this.contact)
+      .subscribe( data => {
+          console.log(data);
+        alert('MISE A JOUR EFFECTUEE');
+        this.router.navigate( ['contacts'] );
+        },
+        err => {
+        console.log('ERROR PUT');
+          alert('ERROR !');
+        });
   }
 
 }

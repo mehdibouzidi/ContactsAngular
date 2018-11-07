@@ -39,6 +39,12 @@ export class ContactService {
     return this.http.put( url, contact)
       .map( resp =>  resp.json() );
   }
+  delete(id: number){
+    const url = 'http://localhost:8080/contact/' + id;
+    console.log(url);
+    return this.http.delete( url )
+      .map( resp =>  resp.json() );
+  }
 
 
 }
